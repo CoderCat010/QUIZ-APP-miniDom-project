@@ -56,20 +56,24 @@ body{
 }
 
 #answer-options li:hover{
-    background-color: #d3d3d3;
+    background-color: #001e4d;
+    color: white;
+    border-radius: 5px;
 }
 
 #nextBtn{
-    padding: 8px 20px;
-    background-color: cornflowerblue;
+    padding: 10px 30px;
+    background-color: black;
     border: none;
     border-radius: 5px;
     color: white;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
+    display: none;
+    margin: 0 auto;
 }
 
 #nextBtn:hover{
-    background-color: rgb(117, 165, 255);
+    background-color: #222;
 }
