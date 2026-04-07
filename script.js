@@ -103,6 +103,28 @@ lists.addEventListener('click', function(event){
     // get all li from ul
     const allLi = lists.children;
 
+    for(let eachOneAnswer of answers){
+        // find correct answer and make it green
+        if(eachOneAnswer.correct === true){
+            // loop through all options 
+            for(let liOption of allLi){
+                if(liOption.textContent === eachOneAnswer.text){
+                    liOption.style.background = ' rgba(117, 255, 117, 0.72)';
+                    liOption.style.color = '#222222e0'
+                    liOption.style.border = 'none';
+                }
+            }
+        }
+
+        // if clicked answer is wrong make it red
+        if(eachOneAnswer.text === selected.textContent){
+            if(eachOneAnswer.correct === false){
+                selected.style.background = "rgba(255, 111, 111, 0.712)";
+                selected.style.color = '#222222e0';
+                selected.style.border = 'none';
+            }
+        }
+    }
     
 })
 
