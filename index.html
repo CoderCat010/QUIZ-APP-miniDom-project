@@ -28,10 +28,6 @@
 
             <!-- question answer options -->
             <ul id="answer-options">
-                <li>Answer 1</li>
-                <li>Answer 2</li>
-                <li>Answer 3</li>
-                <li>Answer 4</li>
             </ul>
 
             <button id="nextBtn">Next</button>
@@ -44,3 +40,55 @@
      <script src="./script.js"></script>
 </body>
 </html>
+
+<!-- 
+    // loop through all answer
+    for(let answerList of answers){
+        if(answerList.text === selected.innerText){
+            if (answerList.correct) {
+                selected.style.background = ' rgba(117, 255, 117, 0.72)';
+                selected.style.color = '#222222e0'
+                selected.style.border = 'none';
+            }else{
+                selected.style.background = "rgba(255, 111, 111, 0.712)";
+                selected.style.color = '#222222e0';
+                selected.style.border = 'none';
+            }
+        }
+    } -->
+for(let eachOneAnswer of answers){
+        // find which one is correct answer
+        if(eachOneAnswer.correct === true){
+            // loop through all options 
+            for(let liOption of allLi){
+                if(liOption.textContent === eachOneAnswer.text){
+                    liOption.style.background = ' rgba(117, 255, 117, 0.72)';
+                    liOption.style.color = '#222222e0'
+                    liOption.style.border = 'none';
+                }
+            }
+        }
+
+        // 2nd task 
+        if(eachOneAnswer.text === selected.textContent){
+            if(eachOneAnswer.correct === false){
+                selected.style.background = "rgba(255, 111, 111, 0.712)";
+                selected.style.color = '#222222e0';
+                selected.style.border = 'none';
+            }
+        }
+    }
+
+
+    / next button to get another question 
+btn.addEventListener('click', function(){
+    currentIndex += 1;
+    if(currentIndex >= questionsOptions.length){
+        questionEl.textContent = "Quiz শেষ! ধন্যবাদ 🎉";
+        lists.innerHTML = "";
+        btn.style.display = 'none';
+        return;
+    }
+
+    startQuiz();
+})

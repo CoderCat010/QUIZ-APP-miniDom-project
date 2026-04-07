@@ -1,7 +1,7 @@
 const questionsOptions = [
     // QUESTIONS: 1
     {
-        question: 'which is largest animal in the world?',
+        question: 'Which is largest animal in the world?',
         answers: [
             {text: 'Shark', correct: false}, 
             {text: 'Blue Whale', correct: true}, 
@@ -12,10 +12,10 @@ const questionsOptions = [
     
     // QUESTIONS: 2
     {
-        question: 'which is largest desert in the world?',
+        question: 'Which is largest desert in the world?',
         answers: [
             {text: 'Kalahari', correct: false}, 
-            {text: 'Gobi', correct: true}, 
+            {text: 'Gobi', correct: false}, 
             {text: 'Shahara', correct: false}, 
             {text: 'Antarctica', correct: true} 
         ]
@@ -49,8 +49,64 @@ const questionsOptions = [
         answers: [
             {text: 'Atlantic Ocean', correct: false}, 
             {text: 'Pacific Ocean', correct: false}, 
-            {text: 'Indian Ocean', correct: true}, 
-            {text: 'Arctic Ocean', correct: false} 
+            {text: 'Indian Ocean', correct: false}, 
+            {text: 'Arctic Ocean', correct: true} 
         ]
     }
 ];
+
+// question 
+const questionEl = document.getElementById("questions");
+
+// get options list 
+const lists = document.getElementById('answer-options');
+
+// next button
+const btn = document.getElementById('nextBtn');
+
+let currentIndex = 0;
+startQuiz();
+
+
+// start quiz 
+function startQuiz(){
+    // start from 0 index of question's option
+    let currentQuestion = questionsOptions[currentIndex];
+
+    // set existing index number's question
+    questionEl.textContent = currentQuestion.question;
+
+    // clear old options
+    lists.innerHTML = "";
+
+    // loop through all options ans set in li 
+    for(let values of currentQuestion.answers){
+        // create list to add options inside that list
+        const createLi = document.createElement('li');
+        createLi.innerText = values.text;
+        lists.appendChild(createLi)
+    }
+}
+
+
+// starting event delegation on ul list
+lists.addEventListener('click', function(event){
+    // check if user clicking in li 
+    if(event.target.tagName != 'LI')return;
+
+    // store li where user clicked
+    const selected = event.target;
+
+    // get current question answers
+    const answers = questionsOptions[currentIndex].answers;
+
+    // get all li from ul
+    const allLi = lists.children;
+
+    
+})
+
+
+
+
+
