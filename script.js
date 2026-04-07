@@ -68,7 +68,7 @@ let currentIndex = 0;
 startQuiz();
 
 
-// start quiz 
+//---> start quiz 
 function startQuiz(){
     // start from 0 index of question's option
     let currentQuestion = questionsOptions[currentIndex];
@@ -89,7 +89,7 @@ function startQuiz(){
 }
 
 
-// starting event delegation on ul list
+//---> starting event delegation on ul list
 lists.addEventListener('click', function(event){
     // check if user clicking in li 
     if(event.target.tagName != 'LI')return;
@@ -128,6 +128,19 @@ lists.addEventListener('click', function(event){
     
 })
 
+
+//---> next button to get another question 
+btn.addEventListener('click', function(){
+    currentIndex += 1;
+    if(currentIndex >= questionsOptions.length){
+        questionEl.textContent = "Quiz শেষ! ধন্যবাদ 🎉";
+        lists.innerHTML = "";
+        btn.style.display = 'none';
+        return;
+    }
+
+    startQuiz();
+})
 
 
 
