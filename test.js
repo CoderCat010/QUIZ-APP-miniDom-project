@@ -67,9 +67,41 @@ const lists = document.getElementById('answer-options');
 // next button
 const btn = document.getElementById('nextBtn');
 
+
+// run the code bruhhhhh you bloody idiot!!!!
+startQuiz();
+
 // first show every questions
 function startQuiz(){
     // store each one questions
     const allQuestion = questionsOptions[currentIndex].question;
     questionEl.textContent = allQuestion;
+
+    // clear previous options before shoeing new options 
+    lists.innerHTML = '';
+
+    // create list to show each one text 
+    for(let eachOneOption of questionsOptions[currentIndex].answers){
+
+        // create list
+        const allLi = document.createElement('li');
+        allLi.textContent = eachOneOption.text;
+        lists.appendChild(allLi);
+    }
 }
+
+// next button to get another question and options
+btn.addEventListener('click', function(){
+    currentIndex++;
+
+    // call the function to do the same work again
+    if(currentIndex >= questionsOptions.length){
+        questionEl.textContent = "Quiz শেষ! ধন্যবাদ 🎉";
+        lists.innerHTML = "";
+        btn.style.display = 'none';
+        return;
+    }else{
+        startQuiz();
+    }
+
+})
