@@ -122,7 +122,14 @@ lists.addEventListener('click', function(event){
             }
         }
 
-      
+        // for wrong answer
+        if(eachOneData.text === selectedLi.textContent){
+            if(eachOneData.correct === false){
+                selectedLi.style.background = "rgba(255, 111, 111, 0.712)";
+                selectedLi.style.color = '#222222e0';
+                selectedLi.style.border = 'none';
+            }
+        }
     }
 })
 
