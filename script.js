@@ -1,147 +1,150 @@
-// const questionsOptions = [
-//     // QUESTIONS: 1
-//     {
-//         question: 'Which is largest animal in the world?',
-//         answers: [
-//             {text: 'Shark', correct: false}, 
-//             {text: 'Blue Whale', correct: true}, 
-//             {text: 'Elephant', correct: false}, 
-//             {text: 'Giraffe', correct: false} 
-//         ]
-//     },
+const questionsOptions = [
+    // QUESTIONS: 1
+    {
+        question: 'Which is largest animal in the world?',
+        answers: [
+            {text: 'Shark', correct: false}, 
+            {text: 'Blue Whale', correct: true}, 
+            {text: 'Elephant', correct: false}, 
+            {text: 'Giraffe', correct: false} 
+        ]
+    },
     
-//     // QUESTIONS: 2
-//     {
-//         question: 'Which is largest desert in the world?',
-//         answers: [
-//             {text: 'Kalahari', correct: false}, 
-//             {text: 'Gobi', correct: false}, 
-//             {text: 'Shahara', correct: false}, 
-//             {text: 'Antarctica', correct: true} 
-//         ]
-//     },
+    // QUESTIONS: 2
+    {
+        question: 'Which is largest desert in the world?',
+        answers: [
+            {text: 'Kalahari', correct: false}, 
+            {text: 'Gobi', correct: false}, 
+            {text: 'Shahara', correct: false}, 
+            {text: 'Antarctica', correct: true} 
+        ]
+    },
 
-//     // QUESTIONS: 3
-//     {
-//         question: 'What is JavaScript?',
-//         answers: [
-//             {text: 'Language', correct: true}, 
-//             {text: 'Framework', correct: false}, 
-//             {text: 'Database', correct: false}, 
-//             {text: 'Library', correct: false} 
-//         ]
-//     },
+    // QUESTIONS: 3
+    {
+        question: 'What is JavaScript?',
+        answers: [
+            {text: 'Language', correct: true}, 
+            {text: 'Framework', correct: false}, 
+            {text: 'Database', correct: false}, 
+            {text: 'Library', correct: false} 
+        ]
+    },
 
-//     // QUESTIONS: 4
-//     {
-//         question: 'Which one is a framework?',
-//         answers: [
-//             {text: 'React', correct: false}, 
-//             {text: 'Vue', correct: true}, 
-//             {text: 'Angular', correct: false}, 
-//             {text: 'JS', correct: false} 
-//         ]
-//     },
+    // QUESTIONS: 4
+    {
+        question: 'Which one is a framework?',
+        answers: [
+            {text: 'React', correct: false}, 
+            {text: 'Vue', correct: true}, 
+            {text: 'Angular', correct: false}, 
+            {text: 'JS', correct: false} 
+        ]
+    },
 
-//     // QUESTIONS: 5
-//     {
-//         question: 'Which is the largest ocean in the world?',
-//         answers: [
-//             {text: 'Atlantic Ocean', correct: false}, 
-//             {text: 'Pacific Ocean', correct: false}, 
-//             {text: 'Indian Ocean', correct: false}, 
-//             {text: 'Arctic Ocean', correct: true} 
-//         ]
-//     }
-// ];
+    // QUESTIONS: 5
+    {
+        question: 'Which is the largest ocean in the world?',
+        answers: [
+            {text: 'Atlantic Ocean', correct: false}, 
+            {text: 'Pacific Ocean', correct: false}, 
+            {text: 'Indian Ocean', correct: false}, 
+            {text: 'Arctic Ocean', correct: true} 
+        ]
+    }
+];
 
-// // question 
-// const questionEl = document.getElementById("questions");
+// current index to start from first array item
+let currentIndex = 0;
 
-// // get options list 
-// const lists = document.getElementById('answer-options');
+// question 
+const questionEl = document.getElementById("questions");
 
-// // next button
-// const btn = document.getElementById('nextBtn');
+// get options list 
+const lists = document.getElementById('answer-options');
 
-// let currentIndex = 0;
-// startQuiz();
-
-
-// //---> start quiz 
-// function startQuiz(){
-//     // start from 0 index of question's option
-//     let currentQuestion = questionsOptions[currentIndex];
-
-//     // set existing index number's question
-//     questionEl.textContent = currentQuestion.question;
-
-//     // clear old options
-//     lists.innerHTML = "";
-
-//     // loop through all options ans set in li 
-//     for(let values of currentQuestion.answers){
-//         // create list to add options inside that list
-//         const createLi = document.createElement('li');
-//         createLi.innerText = values.text;
-//         lists.appendChild(createLi)
-//     }
-// }
+// next button
+const btn = document.getElementById('nextBtn');
 
 
-// //---> starting event delegation on ul list
-// lists.addEventListener('click', function(event){
-//     // check if user clicking in li 
-//     if(event.target.tagName != 'LI')return;
+// run the code bruhhhhh you bloody idiot!!!!
+startQuiz();
 
-//     // store li where user clicked
-//     const selected = event.target;
+// first show every questions
+function startQuiz(){
+    // store each one questions
+    const allQuestion = questionsOptions[currentIndex].question;
+    questionEl.textContent = allQuestion;
 
-//     // get current question answers
-//     const answers = questionsOptions[currentIndex].answers;
+    // clear previous options before shoeing new options 
+    lists.innerHTML = '';
 
-//     // get all li from ul
-//     const allLi = lists.children;
+    // create list to show each one text 
+    for(let eachOneOption of questionsOptions[currentIndex].answers){
 
-//     for(let eachOneAnswer of answers){
-//         // find correct answer and make it green
-//         if(eachOneAnswer.correct === true){
-//             // loop through all options 
-//             for(let liOption of allLi){
-//                 if(liOption.textContent === eachOneAnswer.text){
-//                     liOption.style.background = ' rgba(117, 255, 117, 0.72)';
-//                     liOption.style.color = '#222222e0'
-//                     liOption.style.border = 'none';
-//                 }
-//             }
-//         }
+        // create list
+        const createLi = document.createElement('li');
+        createLi.textContent = eachOneOption.text;
+        lists.appendChild(createLi);
+    }
+}
 
-//         // if clicked answer is wrong make it red
-//         if(eachOneAnswer.text === selected.textContent){
-//             if(eachOneAnswer.correct === false){
-//                 selected.style.background = "rgba(255, 111, 111, 0.712)";
-//                 selected.style.color = '#222222e0';
-//                 selected.style.border = 'none';
-//             }
-//         }
-//     }
+
+// color which one is wrong and which one is the right one 
+lists.addEventListener('click', function(event){
+    // stop if user not clicking on li
+    if(event.target.tagName !== 'LI'){
+        return;
+    }
     
-// })
+    // store clicked li 
+    const selectedLi = event.target;
+
+    // get each one answer data from array 
+    const currentQuestions = questionsOptions[currentIndex].answers;
+
+    // get each one li 
+    const allLi = lists.children;
+
+    // check if current answer data matches li's selected option (each one option with each one answer data)
+    for(let eachOneData of currentQuestions){
+        // checking each one correct orr wrong answer
+        if(eachOneData.correct === true){
+            // loop through all list to find out exact correct/wrong answer
+            for(let allOption of allLi){
+                // for right answer
+                if(allOption.textContent === eachOneData.text){
+                    allOption.style.background = ' rgba(117, 255, 117, 0.72)';
+                    allOption.style.color = '#222222e0'
+                    allOption.style.border = 'none';
+                }
+            }
+        }
+
+        // for wrong answer
+        if(eachOneData.text === selectedLi.textContent){
+            if(eachOneData.correct === false){
+                selectedLi.style.background = "rgba(255, 111, 111, 0.712)";
+                selectedLi.style.color = '#222222e0';
+                selectedLi.style.border = 'none';
+            }
+        }
+    }
+})
 
 
-// //---> next button to get another question 
-// btn.addEventListener('click', function(){
-//     currentIndex += 1;
-//     if(currentIndex >= questionsOptions.length){
-//         questionEl.textContent = "Quiz শেষ! ধন্যবাদ 🎉";
-//         lists.innerHTML = "";
-//         btn.style.display = 'none';
-//         return;
-//     }
+// next button to get another question and options
+btn.addEventListener('click', function(){
+    currentIndex++;
 
-//     startQuiz();
-// })
-
-
-
-
+    // call the function to do the same work again
+    if(currentIndex >= questionsOptions.length){
+        questionEl.textContent = "Quiz শেষ! ধন্যবাদ 🎉";
+        lists.innerHTML = "";
+        btn.style.display = 'none';
+        return;
+    }else{
+        startQuiz();
+    }
+})
