@@ -84,11 +84,48 @@ function startQuiz(){
     for(let eachOneOption of questionsOptions[currentIndex].answers){
 
         // create list
-        const allLi = document.createElement('li');
-        allLi.textContent = eachOneOption.text;
-        lists.appendChild(allLi);
+        const createLi = document.createElement('li');
+        createLi.textContent = eachOneOption.text;
+        lists.appendChild(createLi);
     }
 }
+
+
+// color which one is wrong and which one is the right one 
+lists.addEventListener('click', function(event){
+    // stop if user not clicking on li
+    if(event.target.tagName !== 'LI'){
+        return;
+    }
+    
+    // store clicked li 
+    const selectedLi = event.target;
+
+    // get each one answer data from array 
+    const currentQuestions = questionsOptions[currentIndex].answers;
+
+    // get each one li 
+    const allLi = lists.children;
+
+    // check if current answer data matches li's selected option (each one option with each one answer data)
+    for(let eachOneData of currentQuestions){
+        // checking each one correct orr wrong answer
+        if(eachOneData.correct === true){
+            // loop through all list to find out exact correct/wrong answer
+            for(let allOption of allLi){
+                // for right answer
+                if(allOption.textContent === eachOneData.text){
+                    allOption.style.background = ' rgba(117, 255, 117, 0.72)';
+                    allOption.style.color = '#222222e0'
+                    allOption.style.border = 'none';
+                }
+            }
+        }
+
+      
+    }
+})
+
 
 // next button to get another question and options
 btn.addEventListener('click', function(){
